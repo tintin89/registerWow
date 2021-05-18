@@ -2,11 +2,12 @@ import {useState} from 'react';
 import './MyAccount.css'
 import alianza from '../../Assets/alianza.png';
 import horda from '../../Assets/horda.png';
+import Backdrop from '../UI/Backdrop/Backdrop'
 import { Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {useSelector,useDispatch} from 'react-redux';
 import {logoutWow} from  "../../store/actions/userAction";
-
+import CreatePlayer from '../UI/CreatePlayer/CreatePlayer';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import IconButton from '@material-ui/core/IconButton'
 import {wowclases} from '../../imgData';
@@ -37,12 +38,15 @@ function MyAccount({showLBar}) {
   const dispatch = useDispatch();
   
   const {user} = useSelector(mapState);  
-  
+  const [choosing,setChoosing] = useState(user?.faction !=="" ? false : true);
   
   const classes = useStyles();
- 
   
   
+   const handleChoosing = ()=>{
+     setChoosing(false);
+     
+   }
    
     const getLevel = () =>{
       let count = 0;
@@ -55,8 +59,8 @@ function MyAccount({showLBar}) {
 
     return (
         <div className="myAccount">
-         
-      
+          <Backdrop show={choosing}/>
+        { choosing && <CreatePlayer handleChoosing={handleChoosing}/>}
           <div style={{transform:showLBar && 'translateX(0)'}}  className="myAccount__lateralBar">
           <Avatar alt="Nombre" 
           src={
@@ -105,4 +109,3 @@ function MyAccount({showLBar}) {
 }
 
 export default MyAccount
-
