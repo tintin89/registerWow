@@ -28,11 +28,18 @@
     font-size: 2rem !important;
   }
 
-  
+  .hambIcon{
+      display: none;
+  }
 
   @media (max-width: 501px){
       .navBar__logo{
           font-size: 1rem;
       }
-      
+      .hambIcon{
+          display: block;
+      }
+      .inOutIcon{
+          display: none;
+      }
   }
