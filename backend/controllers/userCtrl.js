@@ -4,8 +4,25 @@ import bcrypt from 'bcryptjs';
 
 
 
-export const updateUser = (req,res)=>{
-    res.send('atualiza user');
+export const updateUser =async(req,res)=>{
+   const userId = req.params.id;
+   const user = await User.findById(userId);
+  if (user) {
+    user.faction = req.body.faction;
+    user.clase = req.body.clase;
+    const updatedUser = await user.save();
+    res.send({
+      _id: updatedUser.id,   
+      usuario:updatedUser.usuario,
+      faction:updatedUser.faction,
+      clase:updatedUser.clase, 
+      correo:updatedUser.correo,
+           
+      token: utils.generarToken(updatedUser),
+    });
+  } else {
+    res.status(400).json({ message: 'Usuario no encontrado' });
+  }
 }
 
 export const registrarUser =async (req,res)=>{
@@ -51,6 +68,11 @@ export const login = async (req,res)=>{
           utils.registrarLogin(user._id,user.logslogin); 
             res.send({
                 _id:user._id,
+                usuario:user.usuario,
+                faction:user.faction,
+                clase:user.clase,
+                correo:user.correo,
+                arreglo:user.logslogin,
                 token:utils.generarToken(user)
             });
             
