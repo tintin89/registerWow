@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+import {useState} from 'react'
+import { BrowserRouter } from "react-router-dom";
+import { Route, Switch } from "react-router";
 import './App.css';
+import NavBar from './components/NavBar/NavBar';
+
+
+import Login from './pages/Login';
+import Home from './pages/Home';
+import VerifyAuth from './Hoc/verifyAuth';
+
+
+
 
 function App() {
+  const [showBar,setShowBar] = useState(false);
+
+  const handleShowBar = () =>{
+    setShowBar(!showBar);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <NavBar handleLBar={handleShowBar} />  
+      
+      <div className="app__container">
+      <BrowserRouter>  
+        <Switch>
+        <Route path="/login" render={()=>(   
+          <Login/>   
+                  
+              
+          )}/> 
+          <Route path="/" render={()=>(
+             <VerifyAuth>
+             <Home showLBar={showBar}/>    
+           </VerifyAuth>
+          )}/>         
+        </Switch>        
+        </BrowserRouter>
+      </div>
+      
+         
     </div>
+    
   );
 }
 
