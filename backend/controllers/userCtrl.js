@@ -62,7 +62,7 @@ export const registrarUser =async (req,res)=>{
 }
 
 export const login = async (req,res)=>{
-    const user = await User.findOne({$or:[{correo:req.body.correo},{usuario:req.body.usuario}]},{useFindAndModify:false});   
+    const user = await User.findOne({$or:[{correo:req.body.usuario},{usuario:req.body.usuario}]},{useFindAndModify:false});   
     
     if(user){        
         if(bcrypt.compareSync(req.body.password,user.password)){
