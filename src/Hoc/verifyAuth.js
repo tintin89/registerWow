@@ -13,7 +13,7 @@ const VerifyAuth = props =>{
 
     useEffect(()=>{
         if(currentUser===""){
-            history.push('/')
+            history.push('/login')
         }
     },[currentUser,history])
 

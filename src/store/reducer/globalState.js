@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionsType';
 
 
 const initialState = {
-    userInfo:"",
+    userInfo:localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : "",
     cargando:false,
     errorMensaje:""
 }

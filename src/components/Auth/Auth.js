@@ -63,7 +63,7 @@ function Auth() {
   
   let redireccionar=null;
   if(user!==""){
-       redireccionar=<Redirect to="/login"/>
+       redireccionar=<Redirect to="/"/>
       }
   
   return (
