@@ -1,6 +1,6 @@
 import {useDispatch,useSelector} from 'react-redux';
 import {logoutWow} from '../../store/actions/userAction';
-import './Navbar.css';
+import './NavBar.css';
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
