@@ -16,6 +16,12 @@ const globalState = (state=initialState,action)=>{
                 userInfo:{...action.usuario}
             }
 
+        case actionTypes.UPDATE_USER_EMPTY:
+            return {
+                ...state,
+                userInfo:""
+            }    
+
         case actionTypes.UPDATE_ERROR_MENSAJE:
            return {
                ...state,
