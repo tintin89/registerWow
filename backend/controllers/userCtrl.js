@@ -28,7 +28,7 @@ export const updateUser =async(req,res)=>{
 export const registrarUser =async (req,res)=>{
     const {nombre,apellidos,usuario,correo,password} = req.body;
     
-    const checkUser = await User.findOne({correo:req.body.correo},{useFindAndModify:false});
+    const checkUser = await User.findOne({$or:[{correo:req.body.correo},{usuario:req.body.usuario}]},{useFindAndModify:false});
     if(checkUser){
         res.status(400).send({message:'Este user ya existe!'});
         return;
