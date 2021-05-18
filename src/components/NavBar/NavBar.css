@@ -1,0 +1,38 @@
+.container__navbar{
+    width: 100%;
+    background-color:#553629;    
+    display: flex;
+    justify-content: center;
+}
+.navBar{
+    color: #f8b700;
+    width: 1400px;
+    height: 5rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navBar__logo{        
+    
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: 'Reggae One', cursive;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    text-shadow: 1px 1px 15px #f8b700;
+}
+
+.navBar .MuiSvgIcon-root {
+    color:#f8b700;  
+    font-size: 2rem !important;
+  }
+
+  
+
+  @media (max-width: 501px){
+      .navBar__logo{
+          font-size: 1rem;
+      }
+      
+  }
