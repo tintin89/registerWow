@@ -3,13 +3,13 @@ import {useState} from 'react';
 import logo from '../../Assets/logo.png'
 import {useDispatch,useSelector} from 'react-redux';
 import {loginWow,updateUserInfo,updateErrorM,updateCargando} from '../../store/actions/userAction';
-
+import {Redirect} from 'react-router-dom';
 import Axios from 'axios';
 import ErrorMessage from '../UI/ErrorMessage/ErrorMessage';
 import Loader from '../UI/Loader/Loader';
 
 const mapState = (globalState) =>({
-  
+  user:globalState.userInfo,
   mensaje:globalState.errorMensaje,
   cargando:globalState.cargando
 })
@@ -61,12 +61,15 @@ function Auth() {
     
   }
   
-  
+  let redireccionar=null;
+  if(user!==""){
+       redireccionar=<Redirect to="/"/>
+      }
   
   return (
     
     <div className="auth">
-      
+      {redireccionar}
       {
         cargando ? <Loader/>
         :

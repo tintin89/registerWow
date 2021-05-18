@@ -8,7 +8,11 @@ export const updateUserInfo = (userInfo) =>{
         usuario:userInfo
     }
 }
-
+export const updateUserInfoEmpty = () =>{
+    return {
+        type:actionTypes.UPDATE_USER_EMPTY,
+         }
+}
 
 
 export const updateErrorM = (m)=>{
@@ -35,7 +39,8 @@ export const loginWow = (usuario,password) =>{
                 dispatch(updateCargando(false));
                 dispatch(updateErrorM(""));
             })
-            .catch(error=>{                
+            .catch(error=>{
+                
                 dispatch(updateCargando(false));
                 dispatch(updateErrorM(error.response.data.message));
             })         
@@ -45,7 +50,7 @@ export const loginWow = (usuario,password) =>{
 export const logoutWow =()=>{
     return dispatch =>{
         localStorage.removeItem('userInfo');
-        dispatch(updateUserInfo(""));
+        dispatch(updateUserInfoEmpty());
         
     }
 }

@@ -4,9 +4,11 @@ import MyAccount from '../components/MyAccount/MyAccount'
 
 
 function Home(props) {
-    return   (    
-       <MyAccount/>   
-      )
+    return   (
+        
+       <MyAccount showLBar={props.showLBar}/> 
+       
+          )
 }
 
 export default Home

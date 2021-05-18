@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionsType';
 
 
 const initialState = {
-    userInfo:"",
+    userInfo:localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : "",
     cargando:false,
     errorMensaje:""
 }
@@ -15,6 +15,12 @@ const globalState = (state=initialState,action)=>{
                 ...state,
                 userInfo:{...action.usuario}
             }
+
+        case actionTypes.UPDATE_USER_EMPTY:
+            return {
+                ...state,
+                userInfo:""
+            }    
 
         case actionTypes.UPDATE_ERROR_MENSAJE:
            return {
